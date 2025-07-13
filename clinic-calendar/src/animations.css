@@ -1,0 +1,109 @@
+/* General Transitions */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Fade In */
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slide In */
+.slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slide Up (for modal) */
+.slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade Up (used for mobile day blocks) */
+.fade-up {
+  animation: fadeUp 0.5s ease-in-out forwards;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pop-in (used for appointment items) */
+.pop-in {
+  animation: popIn 0.3s ease forwards;
+}
+@keyframes popIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Glow hover on buttons */
+button.glow {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+button.glow:hover {
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.9);
+  transform: scale(1.03);
+}
+
+/* Zoom effect on calendar day hover */
+.zoom-hover {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.zoom-hover:hover {
+  transform: scale(1.05);
+  background: #eef5ff;
+}
+
+/* Dark mode toggle transition */
+.mode-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.mode-toggle:hover {
+  transform: rotate(15deg) scale(1.2);
+}

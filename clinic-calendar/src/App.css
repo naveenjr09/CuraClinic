@@ -1,0 +1,267 @@
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background: #f0f2f5;
+  color: #222;
+  padding: 20px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Login Styles */
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-container button:hover {
+  background: #0056b3;
+}
+
+/* Calendar Styles */
+.app-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.day {
+  background: white;
+  padding: 10px;
+  border-radius: 6px;
+  min-height: 80px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.day strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.day.empty {
+  background: transparent;
+  box-shadow: none;
+  cursor: default;
+}
+
+.appts {
+  font-size: 12px;
+  color: #555;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 400px;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  z-index: 999;
+}
+
+.modal h3 {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.modal label {
+  display: block;
+  margin: 10px 0;
+}
+
+.modal select,
+.modal input[type=\"time\"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.modal button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  border: none;
+  background: #28a745;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.modal button[type=\"button\"] {
+  background: #dc3545;
+}
+body.dark,
+.app-container.dark,
+.login-container.dark {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+.dark input,
+.dark select,
+.dark button {
+  background-color: #333;
+  color: #f5f5f5;
+  border: 1px solid #666;
+}
+/* General Transitions */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Fade In */
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slide In */
+.slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slide Up (for modal) */
+.slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade Up (used for mobile day blocks) */
+.fade-up {
+  animation: fadeUp 0.5s ease-in-out forwards;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pop-in (used for appointment items) */
+.pop-in {
+  animation: popIn 0.3s ease forwards;
+}
+@keyframes popIn {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Glow hover on buttons */
+button.glow {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+button.glow:hover {
+  box-shadow: 0 0 12px rgba(0, 123, 255, 0.9);
+  transform: scale(1.03);
+}
+
+/* Zoom effect on calendar day hover */
+.zoom-hover {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.zoom-hover:hover {
+  transform: scale(1.05);
+  background: #eef5ff;
+}
+
+/* Dark mode toggle transition */
+.mode-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.mode-toggle:hover {
+  transform: rotate(15deg) scale(1.2);
+}

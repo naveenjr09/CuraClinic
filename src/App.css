@@ -1,0 +1,753 @@
+/* App.css */
+
+/* General Reset */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100%;
+  background-color: #f2f2f2;
+  scroll-behavior: smooth;
+  overflow: relative;
+}
+
+/* Login Background */
+.login-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000; /* fallback color */
+}
+
+@keyframes hospitalGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 48%;
+  width: 4%;
+  z-index: 1;
+  background: linear-gradient(to right, rgba(0,0,0,0.15), rgba(0,0,0,0.15));
+}
+
+@keyframes pulseBG {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.04); }
+}
+
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background: rgb(27 49 77 / 88%); /* clearer box */
+  backdrop-filter: blur(4px);
+  padding: 32px;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 123, 255, 0.15);
+  max-width: 360px;
+  width: 90%;
+}
+
+@keyframes floatBox {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-6px); }
+}
+
+
+.login-box input {
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #b3d7ff;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  background-color: #f5faff;
+  transition: box-shadow 0.3s ease;
+}
+
+.login-box input:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 6px rgba(0,123,255,0.4);
+}
+
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #007BFF;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-box button:hover {
+  background: #0056b3;
+}
+
+.login-box .logo {
+  width: 70px;
+  margin-bottom: 20px;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.login-box .logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px #007BFF);
+}
+
+/* Dark login */
+.dark .login-box {
+  background: rgba(22, 22, 22, 0.95);
+}
+.dark .login-box input {
+  background: #1e1e1e;
+  color: #eee;
+  border-color: #444;
+}
+.dark .login-box input:focus {
+  border-color: #00b4cc;
+  box-shadow: 0 0 5px rgba(0,180,204,0.3);
+}
+.dark .login-box button {
+  background: #00b4cc;
+}
+.dark .login-box button:hover {
+  background: #009fb3;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 4px #007BFF; }
+  50% { box-shadow: 0 0 12px #007BFF; }
+  100% { box-shadow: 0 0 4px #007BFF; }
+}
+
+/* Dark Mode */
+.dark {
+  background-color: #121212;
+  color: #eee;
+}
+.dark input,
+.dark select,
+.dark button {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+.dark .calendar-grid .day {
+  background-color: #1f1f1f;
+}
+.dark .modal {
+  background-color: #242424;
+}
+.dark table, .dark th, .dark td {
+  background-color: #1a1a1a;
+  color: #eee;
+}
+
+/* Login Page */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+.login-box {
+  background-color: rgb(27 49 77 / 88%);
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 300px;
+  animation: fadeIn 0.6s ease-in;
+}
+.dark .login-box {
+  background-color: rgba(18, 18, 18, 0.9);
+}
+.logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+/* Top Bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  background: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  gap: 10px;
+}
+.logo-sm {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+/* View Tabs */
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+.view-toggle button {
+  padding: 8px 14px;
+  background:#007BFF;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.view-toggle button.active {
+  background: #007BFF;
+  color: white;
+  font-weight: bold;
+}
+
+/* Calendar Grid */
+.calendar-header {
+  text-align: center;
+  padding: 10px 0;
+}
+.day-names {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding: 0 20px;
+  font-weight: bold;
+  color: #666;
+}
+.day-name {
+  text-align: center;
+  padding: 5px 0;
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  padding: 0 20px 20px;
+}
+.day {
+  background-color: #fff;
+  padding: 10px;
+  min-height: 80px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  animation: fadeIn 0.4s ease-in;
+}
+.day:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.15);
+}
+.day.grey {
+  background: #ddd;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.day.today {
+  border: 2px solid #007BFF;
+  animation: glow 1.8s infinite ease-in-out;
+}
+
+/* Appointment Entries */
+.appts {
+  font-size: 12px;
+  margin-top: 5px;
+}
+button {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* Filters Bar */
+.filters {
+  padding: 10px 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 10;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease-in-out;
+}
+.modal h3 {
+  margin-top: 0;
+}
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* List View Table */
+.appt-table {
+  width: 90%;
+  margin: 0 auto 30px;
+  border-collapse: collapse;
+}
+.appt-table th,
+.appt-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+.appt-table th {
+  background-color: #007BFF;
+  color: white;
+}
+.appt-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.dark .appt-table tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+/* 📱 Mobile Styles */
+.mobile-scroll-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.date-picker {
+  padding: 8px 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  background: #fff;
+}
+.dark .date-picker {
+  background: #1e1e1e;
+  color: white;
+  border-color: #444;
+}
+
+.mobile-day-block {
+  width: 100%;
+  max-width: 450px;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.dark .mobile-day-block {
+  background: #222;
+}
+
+.mobile-day-block h4 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.mobile-day-block p {
+  color: #666;
+  font-style: italic;
+}
+
+.mobile-day-block button {
+  background: #007bff;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  margin: 5px 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.mobile-day-block button:hover {
+  background: #0056b3;
+}
+
+/* Floating + Button */
+.fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #007bff;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 999;
+  transition: background 0.3s ease;
+}
+.fab:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+  }
+  .top-bar .logo-sm {
+    width: 32px;
+    height: 32px;
+  }
+}
+@keyframes animatedGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.login-container::before {
+  background: rgba(255, 255, 255, 0.65); /* slightly more transparent */
+  backdrop-filter: blur(6px);
+}
+.logo {
+  width: 72px;
+  margin-bottom: 20px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+.logo:hover {
+  transform: scale(1.1) rotate(2deg);
+  filter: drop-shadow(0 0 8px rgba(0, 123, 255, 0.4));
+}
+.login-box button {
+  padding: 12px;
+  background: linear-gradient(135deg, #007bff, #00c3ff);
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+  transition: all 0.3s ease;
+}
+.login-box button:hover {
+  background: #005ecb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 123, 255, 0.5);
+}
+/* Fullscreen Login Container */
+.login-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto; /* Enable vertical scroll */
+}
+
+/* Left and Right Backgrounds */
+.half-bg {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  transition: filter 0.3s ease;
+  opacity: 1;
+}
+.half-bg.left {
+  left: 0;
+}
+.half-bg.right {
+  right: 0;
+}
+
+/* Center Login Box */
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  background: rgb(27 49 77 / 88%);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 64px;
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.15);
+  max-width: 350px;
+  width: 90%;
+  overflow: hidden;
+}
+.dark .login-box {
+  background: rgba(18, 18, 18, 0.9);
+}
+.left-overlay-box {
+  position: absolute;
+  top: 50%;
+  left: 30px;
+  transform: translateY(-50%);
+  width: 260px;
+  height: 260px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fadeInOut 3s ease-in-out;
+  border-radius: 20px;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.left-overlay-box {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 360px;
+  height: 460px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 10px;
+}
+
+/* Carousel Image Styling */
+.carousel img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: opacity 0.5s ease-in-out;
+}
+.right-overlay-box {
+  position: absolute;
+  top: 50%;
+  right: 80px;
+  transform: translateY(-50%);
+  width: 360px;
+  height: 460px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 12px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.doctor-carousel {
+  text-align: center;
+}
+
+.doctor-carousel img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.doc-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #f1f1f1;
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .login-box {
+    top: 125%;
+    left: 11%; /* Move login to the left */
+    transform: translateY(-50%);
+  }
+
+  .left-overlay-box {
+    display: none; /* Hide left carousel box */
+  }
+
+  .right-overlay-box {
+    right: 25%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 90%; /* Expand for better visibility */
+    max-width: 300px;
+  }
+
+  .half-bg.left {
+    display: none; /* Optional: hide left bg if needed */
+  }
+
+  .half-bg.right {
+    height: 170%;
+    width: 100%; /* Optional: full width bg if you want to show right bg on mobile */
+    opacity: 0.3; /* Fade it a bit */
+  }
+}
+.loader-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 100%;
+  background: #132e52;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  color: #fff;
+  font-size: 18px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #00e5ff;
+  border-top: 6px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.doctors-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px;
+}
+
+.doctor-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  padding: 16px;
+  width: 180px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+}
+
+.doctor-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.doctor-name {
+  font-weight: 600;
+  margin: 12px 0 8px;
+  color: #000; /* Default: black for light mode */
+}
+
+/* When dark mode is active */
+.dark .doctor-name {
+  color: #fff;
+}
+
+
+.doctor-card button {
+  margin: 4px;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #1976d2;
+  color: white;
+  font-size: 12px;
+}
+.add-new-section {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-box input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.input-box button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+.input-box button:hover {
+  background-color: #45a049;
+}
